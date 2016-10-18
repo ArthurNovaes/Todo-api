@@ -3,7 +3,7 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 var todos = [{
 	id: 1,
-	description: 'Meet mom for lunch',
+	description: 'Meet Ben for lunch',
 	completed: false
 }, {
 	id: 2,
@@ -12,7 +12,7 @@ var todos = [{
 }, {
 	id: 3,
 	description: 'Study every day',
-	completed: true
+	completed: true	
 }];
 
 app.get('/', function (req, res) {
