@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var _ = require('underscore');
+var _ = require('lodash');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -21,7 +21,7 @@ app.get('/todos', function (req, res) {
 // GET /todos/:id
 app.get('/todos/:id', function (req, res) {
 	var todosId = parseInt(req.params.id, 10);
-	var matchedTodo = _.findWhere(todos, {id: todosId});
+	var matchedTodo = _.find(todos, {id: todosId});
 
 	if (matchedTodo) {
 		res.json(matchedTodo);
@@ -46,6 +46,19 @@ app.post('/todos',function (req, res) {
 	
 
 	res.json(body);
+});
+
+// DELETE /todos/:id
+app.delete('/todos/:id', function (req, res) {
+	var todoId = parseInt(req.params.id, 10);
+	var matchedTodo = _.find(todos, {id: todoId});
+
+	if (!matchedTodo) {
+		res.status(404).json({"error": "no todo found with that id"});
+	} else {
+		todos = _.without(todos, matchedTodo);
+		res.json(matchedTodo);
+	}
 });
 
 app.listen(PORT, function () {
