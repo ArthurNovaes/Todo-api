@@ -23,15 +23,7 @@ sequelize.sync({
 	// force: true
 }).then(function () {
 	console.log('Everything is synced');
-
-	// Todo.create({
-	// 	description: 'Walk the dog'
-	// }).then(function (todo) {
-	// 	return Todo.create({
-	// 		description: 'Watch jojo'
-	// 	})
-	// });
-
+	
 	Todo.findById(3).then(function (todo) {
 		if (todo) {
 			console.log(todo.toJSON());
