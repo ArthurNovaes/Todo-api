@@ -8,7 +8,7 @@ var PORT = process.env.PORT || 3000;
 var todos = [];
 var todoNextID = 1;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 
 app.get('/', function (req, res) {
 	res.send('Todo API Root');
